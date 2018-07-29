@@ -1,3 +1,5 @@
 # intellij-plugin-json2dart
 
-quickly to convert a JSON string to a Dart class ...
+Quickly to convert a JSON string to a Dart class ...
+
+Most code is base on [zzz40500/GsonFormat](https://github.com/zzz40500/GsonFormat).
