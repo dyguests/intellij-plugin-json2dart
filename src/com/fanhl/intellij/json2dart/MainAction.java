@@ -18,10 +18,12 @@ import org.jetbrains.annotations.NotNull;
  * @author fanhl
  */
 public class MainAction extends BaseGenerateAction {
+    @SuppressWarnings("unused")
     public MainAction() {
         super(null);
     }
 
+    @SuppressWarnings("unused")
     public MainAction(CodeInsightActionHandler handler) {
         super(handler);
     }
