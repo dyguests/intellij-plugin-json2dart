@@ -2,7 +2,7 @@
     <id>com.fanhl.intellij.json2dart</id>
     <name>json2dart</name>
     <version>0.1</version>
-    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">dyguests</vendor>
+    <vendor email="dyguests@qq.com" url="https://github.com/dyguests/intellij-plugin-json2dart">github.com/dyguests</vendor>
 
     <description><![CDATA[
       quickly to convert a JSON string to an Dart class ...<br>
