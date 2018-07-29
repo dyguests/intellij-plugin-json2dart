@@ -1,0 +1,3 @@
+# json2dart
+
+quickly to convert a JSON string to an Dart class ...
