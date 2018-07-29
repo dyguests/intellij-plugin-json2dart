@@ -6,6 +6,9 @@ import com.intellij.psi.PsiFile;
 
 import javax.swing.*;
 
+/**
+ * @author fanhl
+ */
 public class JsonDialog extends JFrame {
 
     private final Project project;
