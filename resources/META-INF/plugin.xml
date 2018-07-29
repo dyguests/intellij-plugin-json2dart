@@ -2,7 +2,8 @@
     <id>com.fanhl.intellij.json2dart</id>
     <name>json2dart</name>
     <version>0.1</version>
-    <vendor email="dyguests@qq.com" url="https://github.com/dyguests/intellij-plugin-json2dart">github.com/dyguests</vendor>
+    <vendor email="dyguests@qq.com" url="https://github.com/dyguests/intellij-plugin-json2dart">github.com/dyguests
+    </vendor>
 
     <description><![CDATA[
       quickly to convert a JSON string to an Dart class ...<br>
@@ -27,7 +28,10 @@
     </extensions>
 
     <actions>
-        <!-- Add your actions here -->
+        <action class="com.fanhl.intellij.json2dart.MainAction" id="json2dart" text="json2dart">
+            <add-to-group group-id="GenerateGroup" anchor="last"/>
+            <!--<keyboard-shortcut keymap="$default" first-keystroke="alt s"/>-->
+        </action>
     </actions>
 
 </idea-plugin>
