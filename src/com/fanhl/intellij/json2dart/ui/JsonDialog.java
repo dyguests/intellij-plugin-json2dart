@@ -7,10 +7,10 @@ import com.intellij.psi.PsiFile;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * @author fanhl
- */
 public class JsonDialog extends JFrame {
+    private JPanel panel1;
+    private JTextArea textArea1;
+    private JButton button1;
 
     private final Project project;
     private final PsiFile psiFile;
@@ -21,6 +21,8 @@ public class JsonDialog extends JFrame {
         this.project = project;
         this.psiFile = psiFile;
         this.psiClass = psiClass;
+
+        setContentPane(panel1);
 
         setTitle("json2dart");
         this.setAlwaysOnTop(true);
