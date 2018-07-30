@@ -9,9 +9,9 @@ import java.awt.*;
 
 public class JsonDialog extends JFrame {
     private JPanel panel1;
-    private JTextField textField1;
-    private JTextArea textArea1;
-    private JButton button1;
+    private JTextField generateTextField;
+    private JTextArea jsonJTA;
+    private JButton generateJB;
 
     private final Project project;
     private final PsiFile psiFile;
@@ -26,7 +26,7 @@ public class JsonDialog extends JFrame {
         setContentPane(panel1);
 
         setTitle("json2dart");
-        getRootPane().setDefaultButton(button1);
+        getRootPane().setDefaultButton(generateJB);
         this.setAlwaysOnTop(true);
     }
 }
