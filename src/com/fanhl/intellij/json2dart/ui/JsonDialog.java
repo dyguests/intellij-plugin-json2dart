@@ -1,8 +1,8 @@
 package com.fanhl.intellij.json2dart.ui;
 
 import com.intellij.openapi.project.Project;
-import com.intellij.psi.PsiClass;
-import com.intellij.psi.PsiFile;
+import com.intellij.psi.*;
+import org.apache.http.util.TextUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -28,5 +28,35 @@ public class JsonDialog extends JFrame {
         setTitle("json2dart");
         getRootPane().setDefaultButton(generateJB);
         this.setAlwaysOnTop(true);
+
+        initListener();
+    }
+
+    private void initListener() {
+        generateJB.addActionListener(e -> {
+            onGenerate();
+        });
+    }
+
+    /**
+     * 生成 dart 代码
+     */
+    private void onGenerate() {
+        setAlwaysOnTop(false);
+
+        String classNameStr = generateTextField.getText().trim();
+        if (TextUtils.isBlank(classNameStr)) {
+            return;
+        }
+
+        String jsonStr = jsonJTA.getText().trim();
+        if (TextUtils.isBlank(jsonStr)) {
+            return;
+        }
+
+
+        PsiElementFactory factory = JavaPsiFacade.getElementFactory(project);
+        PsiMethod psiMethod = factory.createMethodFromText("void a(){}", psiClass);
+        psiFile.add(psiMethod);
     }
 }
