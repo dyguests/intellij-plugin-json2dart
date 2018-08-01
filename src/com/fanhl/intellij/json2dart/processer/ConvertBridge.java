@@ -33,7 +33,7 @@ public class ConvertBridge {
         sb.append(jsonStr);
         sb.append("}\n");
 
-        sb.append("/*\n");
+        sb.append("*/\n");
 
         WriteCommandAction.runWriteCommandAction(project, () -> {
             PsiElementFactory factory = PsiElementFactory.SERVICE.getInstance(project);
