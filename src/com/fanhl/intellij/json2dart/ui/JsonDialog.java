@@ -1,5 +1,6 @@
 package com.fanhl.intellij.json2dart.ui;
 
+import com.fanhl.intellij.json2dart.processer.ConvertBridge;
 import com.intellij.openapi.command.WriteCommandAction;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiClass;
@@ -21,22 +22,25 @@ public class JsonDialog extends JFrame {
     private final PsiFile psiFile;
     private final PsiClass psiClass;
 
+    private final ConvertBridge convertBridge;
 
     public JsonDialog(Project project, PsiFile psiFile, PsiClass psiClass) throws HeadlessException {
         this.project = project;
         this.psiFile = psiFile;
         this.psiClass = psiClass;
 
+        assignViews();
+
+        convertBridge = new ConvertBridge(project, psiFile, psiClass);
+    }
+
+    private void assignViews() {
         setContentPane(panel1);
 
         setTitle("json2dart");
         getRootPane().setDefaultButton(generateJB);
         this.setAlwaysOnTop(true);
 
-        initListener();
-    }
-
-    private void initListener() {
         generateJB.addActionListener(e -> {
             onGenerate();
         });
@@ -58,11 +62,6 @@ public class JsonDialog extends JFrame {
             return;
         }
 
-        WriteCommandAction.runWriteCommandAction(project, () -> {
-            PsiElementFactory factory = PsiElementFactory.SERVICE.getInstance(project);
-            PsiComment comment = factory.createCommentFromText("// test", psiFile);
-            psiFile.addBefore(comment, psiFile.getFirstChild());
-        });
-
+       convertBridge.convert(classNameStr, jsonStr);
     }
 }
