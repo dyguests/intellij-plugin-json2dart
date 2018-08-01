@@ -1,6 +1,7 @@
 package com.fanhl.intellij.json2dart;
 
 import com.fanhl.intellij.json2dart.ui.JsonDialog;
+import com.fanhl.intellij.json2dart.util.PsiDartUtils;
 import com.intellij.codeInsight.CodeInsightActionHandler;
 import com.intellij.codeInsight.generation.actions.BaseGenerateAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -8,6 +9,7 @@ import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiClass;
+import com.intellij.psi.PsiCompiledElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.util.PsiUtilBase;
 import org.jetbrains.annotations.NotNull;
@@ -35,7 +37,28 @@ public class MainAction extends BaseGenerateAction {
 
     @Override
     protected boolean isValidForFile(@NotNull Project project, @NotNull Editor editor, @NotNull PsiFile file) {
-        return super.isValidForFile(project, editor, file);
+        if (project == null) {
+            return false;
+        }
+
+        if (editor == null) {
+            return false;
+        }
+
+        if (file == null) {
+            return false;
+        }
+
+        if (!PsiDartUtils.isDartFile(file)) {
+            return false;
+        } else if (file instanceof PsiCompiledElement) {
+            return false;
+        } else {
+//            PsiClass targetClass = this.getTargetClass(editor, file);
+//            return targetClass != null && this.isValidForClass(targetClass);
+
+            return true;
+        }
     }
 
     @Override
@@ -54,6 +77,7 @@ public class MainAction extends BaseGenerateAction {
         if (psiFile == null) {
             return;
         }
+
 
         PsiClass psiClass = getTargetClass(editor, psiFile);
 
