@@ -25,11 +25,19 @@ public class ConvertBridge {
      */
     public void convert(String classNameStr, String jsonStr) {
         StringBuilder sb = new StringBuilder();
+        sb.append("/*");
+
         sb.append("class ");
+        sb.append(classNameStr);
+        sb.append(" {\n");
+        sb.append(jsonStr);
+        sb.append("}\n");
+
+        sb.append("/*\n");
 
         WriteCommandAction.runWriteCommandAction(project, () -> {
             PsiElementFactory factory = PsiElementFactory.SERVICE.getInstance(project);
-            PsiComment comment = factory.createCommentFromText("// test", psiFile);
+            PsiComment comment = factory.createCommentFromText(sb.toString(), psiFile);
             psiFile.addBefore(comment, psiFile.getFirstChild());
         });
 
