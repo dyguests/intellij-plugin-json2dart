@@ -24,6 +24,8 @@ public class ConvertBridge {
      * @param jsonStr      json字符串
      */
     public void convert(String classNameStr, String jsonStr) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class ");
 
         WriteCommandAction.runWriteCommandAction(project, () -> {
             PsiElementFactory factory = PsiElementFactory.SERVICE.getInstance(project);
