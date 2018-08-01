@@ -58,7 +58,6 @@ public class JsonDialog extends JFrame {
             return;
         }
 
-//        new WriteCommandAction.Simple<>(project,psiFile)
         WriteCommandAction.runWriteCommandAction(project, () -> {
             PsiElementFactory factory = PsiElementFactory.SERVICE.getInstance(project);
             PsiComment comment = factory.createCommentFromText("// test", psiFile);
