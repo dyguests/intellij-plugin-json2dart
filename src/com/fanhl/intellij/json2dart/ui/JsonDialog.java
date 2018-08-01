@@ -1,7 +1,11 @@
 package com.fanhl.intellij.json2dart.ui;
 
+import com.intellij.openapi.command.WriteCommandAction;
 import com.intellij.openapi.project.Project;
-import com.intellij.psi.*;
+import com.intellij.psi.PsiClass;
+import com.intellij.psi.PsiComment;
+import com.intellij.psi.PsiElementFactory;
+import com.intellij.psi.PsiFile;
 import org.apache.http.util.TextUtils;
 
 import javax.swing.*;
@@ -54,9 +58,12 @@ public class JsonDialog extends JFrame {
             return;
         }
 
+//        new WriteCommandAction.Simple<>(project,psiFile)
+        WriteCommandAction.runWriteCommandAction(project, () -> {
+            PsiElementFactory factory = PsiElementFactory.SERVICE.getInstance(project);
+            PsiComment comment = factory.createCommentFromText("// test", psiFile);
+            psiFile.addBefore(comment, psiFile.getFirstChild());
+        });
 
-        PsiElementFactory factory = JavaPsiFacade.getElementFactory(project);
-        PsiMethod psiMethod = factory.createMethodFromText("void a(){}", psiClass);
-        psiFile.add(psiMethod);
     }
 }
