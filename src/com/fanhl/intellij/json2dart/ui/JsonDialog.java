@@ -1,11 +1,9 @@
 package com.fanhl.intellij.json2dart.ui;
 
+import com.fanhl.intellij.json2dart.parser.IParser;
 import com.fanhl.intellij.json2dart.processer.ConvertBridge;
-import com.intellij.openapi.command.WriteCommandAction;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiClass;
-import com.intellij.psi.PsiComment;
-import com.intellij.psi.PsiElementFactory;
 import com.intellij.psi.PsiFile;
 import org.apache.http.util.TextUtils;
 
@@ -62,6 +60,7 @@ public class JsonDialog extends JFrame {
             return;
         }
 
-       convertBridge.convert(classNameStr, jsonStr);
+        IParser.Type type = IParser.Type.TEST;
+        convertBridge.convert(classNameStr, jsonStr, type);
     }
 }
