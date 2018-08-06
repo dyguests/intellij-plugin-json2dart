@@ -10,4 +10,17 @@ public class ClassEntity {
     public void addField(FieldEntity fieldEntity) {
         fields.add(fieldEntity);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("class {");
+        fields.forEach(fieldEntity -> {
+            sb.append("    ").append(fieldEntity.type).append(" ").append(fieldEntity.name).append(";").append("\n");
+        });
+        sb.append("}");
+
+        return sb.toString();
+    }
 }
