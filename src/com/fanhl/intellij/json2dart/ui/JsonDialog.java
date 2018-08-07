@@ -62,5 +62,7 @@ public class JsonDialog extends JFrame {
 
         IParser.Type type = IParser.Type.TEST;
         convertBridge.convert(classNameStr, jsonStr, type);
+
+
     }
 }
