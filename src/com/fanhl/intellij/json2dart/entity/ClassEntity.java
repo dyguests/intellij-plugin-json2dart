@@ -1,5 +1,7 @@
 package com.fanhl.intellij.json2dart.entity;
 
+import com.fanhl.intellij.json2dart.util.PsiDartUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,12 +17,15 @@ public class ClassEntity {
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        sb.append("class {");
+        sb.append("/*\n");
+        sb.append("class {\n");
         fields.forEach(fieldEntity -> {
-            sb.append("    ").append(fieldEntity.type).append(" ").append(fieldEntity.name).append(";").append("\n");
+            sb.append(PsiDartUtils.createIndentation()).append(fieldEntity.type).append(" ").append(fieldEntity.name).append(";").append("\n");
         });
-        sb.append("}");
+        sb.append("}\n");
+        sb.append("*/\n");
 
         return sb.toString();
     }
+
 }
