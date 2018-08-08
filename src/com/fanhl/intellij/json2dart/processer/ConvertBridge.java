@@ -41,7 +41,8 @@ public class ConvertBridge {
         WriteCommandAction.runWriteCommandAction(project, () -> {
             PsiElementFactory factory = PsiElementFactory.SERVICE.getInstance(project);
             PsiComment comment = factory.createCommentFromText(commentStr.toString(), psiFile);
-            psiFile.addAfter(comment, psiFile.getLastChild());
+//            psiFile.addAfter(comment, psiFile.getLastChild());
+            psiFile.addAfter(factory.createClass(comment.toString()), psiFile.getLastChild());
         });
     }
 }

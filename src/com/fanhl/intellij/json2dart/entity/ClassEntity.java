@@ -17,13 +17,13 @@ public class ClassEntity {
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        sb.append("/*\n");
+//        sb.append("/*\n");
         sb.append("class {\n");
         fields.forEach(fieldEntity -> {
             sb.append(PsiDartUtils.createIndentation()).append(fieldEntity.type).append(" ").append(fieldEntity.name).append(";").append("\n");
         });
         sb.append("}\n");
-        sb.append("*/\n");
+//        sb.append("*/\n");
 
         return sb.toString();
     }
